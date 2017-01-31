@@ -11,7 +11,7 @@ describe('Our first test', () => {
 describe('index.html', () => {
     it('Should have h1 that says Users', (done) => {
         const index = fs.readFileSync('./src/index.html', 'utf-8'); //get the content of index.html and place it in memory
-        
+
         // We can send in more files, for example js files used by index.html
         // remember if a 'fetch' is done, then it must be isomorphic since it runs on the server
         jsdom.env(index, function(err, window){ //This is an async call with a callback function
