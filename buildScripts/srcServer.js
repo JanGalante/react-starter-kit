@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path'; //global access to path set in Node
 import open from 'open';
 import webpack from 'webpack';
+// import WebpackDevServer from 'webpack-dev-server';
 import config from '../webpack.config.dev';
 
 /* eslint-disable no-console */
