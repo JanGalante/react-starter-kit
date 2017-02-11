@@ -3,12 +3,13 @@ import path from 'path'; //global access to path set in Node
 import open from 'open';
 import webpack from 'webpack';
 // import WebpackDevServer from 'webpack-dev-server';
-import config from '../webpack.config.dev';
+// import config from '../webpack.config.dev';
+import config from '../webpack.react.dev';
 
 /* eslint-disable no-console */
 
 const port = 3000;
-const app = express()
+const app = express();
 const compiler = webpack(config); //new webpack compiler
 
 //Tell express to use the webpack middleware
@@ -16,6 +17,9 @@ app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath //use the publicPath in our config
 }));
+
+//Tell express to use hot reload for react
+app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('/', function (req, res) {
     //res.send('Hello World!')
